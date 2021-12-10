@@ -2,11 +2,11 @@
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
-#imports
+# imports
 import os
 from random import *
 
-#contstants
+# contstants
 let_to_num = {
     "A": 0,
     "B": 1,
@@ -21,7 +21,14 @@ def print_hr():
 # Game class
 class Game:
     def __init__(self, player_name):
-        pass
+        self.player_name = player_name
+        self.player_board = [[" "] * 2 for i in range(2)]
+        self.computer_board = [[" "] * 2 for i in range(2)]
+        self.player_guess_board = [[" "] * 2 for i in range(2)]
+        self.computer_guess_board = [[" "] * 2 for i in range(2)]
+        self.player_score = 0
+        self.computer_score = 0
+        self.result = None #win, lose, quit
 
     def print_board(self, board):
         pass
@@ -43,6 +50,12 @@ class Game:
 
 
 def exit_game():
+    print()
+    print_hr()
+    print(" Sad to see you go. Try again later!")
+    print_hr()
+    exit()
+
 
 def main():
     
@@ -118,7 +131,6 @@ Rules:
 
         elif option == "3":
             exit_game()
-
                 
 if __name__ == "__main__":
     main()
