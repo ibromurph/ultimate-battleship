@@ -103,11 +103,18 @@ class Game:
 
         os.system(command_to_clear)
         print_hr()
-        print("endless loop")
-
         
-        # if players turn
-            #get user input
+        while True:
+            if turn == 0:  # player's turn
+                print("Player {}'s turn: ".format(self.player_name))
+                print_hr()
+                print("Your Ocean:")
+                self.print_board(self.player_board)
+                print_hr()
+                print("Computer's Board:")
+                self.print_board(self.player_guess_board)
+
+            row, col = self.get_user_input()
         
         #while player players input
             # if on comp board already shot here, ask again
