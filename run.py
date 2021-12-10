@@ -93,7 +93,36 @@ class Game:
         print_hr()
 
     def start_game(self):
-        pass
+        
+        # if players turn
+            #get user input
+        
+        #while player players input
+            # if on comp board already shot here, ask again
+            # if comp board has ship, print you hit a ship
+            # else if don't hit ship, print you missed
+
+        #print score
+
+        #check if all ships are destroyed
+            #if they are, you win
+            #if not, computer turn
+
+
+        # if computer turn
+            #get random input
+        
+        #while player players input
+            # if on player board already been shot here, ask again
+            # if player board has ship, print computer hit a ship
+            # else if computer doesn't hit ship, print computer missed
+
+        #print score
+
+        #check if all ships are destroyed
+            #if they are, computer wins
+            #if not, player turn. Ask if they want to continue.
+
 
 def exit_game():
     print()
@@ -101,7 +130,6 @@ def exit_game():
     print("Sad to see you go. Try again later!")
     print_hr()
     exit()
-
 
 def main():
     os.system(command_to_clear)
