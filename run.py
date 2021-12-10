@@ -42,6 +42,30 @@ class Game:
             row_number += 1
 
 
+    def get_user_input():
+        """
+        Method gets user coordinates input
+        :return: row and column
+        """
+        while True:
+            hit_position = input(
+                "Enter coordinates (row, column) or (number, alphabet): "
+            )
+            try:
+                row, col = hit_position.split(",")
+                row = int(row)
+                col = let_to_num[col]
+
+                if col < 0 or col > 1 or row < 0 or row > 1:
+                     print("Please enter a valid move!")
+                    playsound("sounds/err.wav")
+                    continue
+
+            except:
+                print("Please enter a valid move!")
+                playsound("sounds/err.wav")
+                continue
+            
     def create_ships(self, board):
         """
         Method creates ships in the board randomly
