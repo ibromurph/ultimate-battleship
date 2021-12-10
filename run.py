@@ -31,7 +31,16 @@ class Game:
         self.result = None #win, lose, quit
 
     def print_board(self, board):
-        pass
+        """
+        Method prints the board to console
+        :return: None
+        """
+        print("  A B")
+        row_number = 0
+        for row in board:
+            print("%d|%s|" % (row_number, "|".join(row)))
+            row_number += 1
+
 
     def create_ships(self, board):
         pass
