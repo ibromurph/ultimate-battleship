@@ -18,7 +18,7 @@ lets = ["A", "B"]
 command_to_clear = "clear"
 
 def print_hr():
-    print("| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  |")
+    print("| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |")
 
 # Game class
 class Game:
@@ -123,7 +123,7 @@ class Game:
         Method: Main game loop
         :return: None
         """
-        turn = 0 #represents player turn
+        turn = 0 # represents player turn
         self.create_ships(self.player_board)
         self.create_ships(self.computer_board)
 
@@ -178,7 +178,7 @@ class Game:
                     )
                     print(win)
                     self.result = "player_win"
-                    #playsound("sounds/err.wav")
+                    # playsound("sounds/err.wav")
                     input("Press enter!")
                     break
 
@@ -212,12 +212,42 @@ class Game:
                     )
                 )
 
-        # print board
-        # print score
+                print_hr()
 
-        #check if all ships are destroyed
-            #if they are, computer wins
-            #if not, player turn. Ask if they want to continue.
+                print("Computer Shots Till Now:")
+                self.print_board(self.computer_guess_board)
+                print_hr()
+
+                is_win = self.check_ships_destroyed(turn)
+
+                if not is_win:
+                    while True:
+                        res = input("Do you want to continue? (y/n) ")
+                        if res == "y":
+                            turn = 0
+                            os.system(command_to_clear)
+                            break
+                        elif res == "n":
+                            self.result = "player_quit"
+                            break
+                        else:
+                            print("Invalid input!")
+                            continue
+
+                    if self.result == "player_quit":
+                        break
+
+                if is_win:
+                    os.system(command_to_clear)
+                    self.print_on_win()
+                    win = str(
+                        "You Lose! Computer wins the game! Congratulations!"
+                    )
+                    print(win)
+                    self.result = "player_lose"
+                    #playsound("sounds/lose.wav")
+                    input("Press enter!")
+                    break
 
 
 def exit_game():
@@ -234,9 +264,9 @@ def main():
         os.system(command_to_clear)
         option = input(
             """
-| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  |
-| ~ ~ ~ ~ ~ ~ ~ ~ ~Battleship ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  |
-| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  |
+| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |
+| ~ ~ ~ ~ ~ ~ ~ ~ ~Battleship ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |
+| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |
 
 Welcome to Battleship!
 Board Size: 10 x 10, Number of Ships: 5
