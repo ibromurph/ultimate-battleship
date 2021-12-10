@@ -86,6 +86,7 @@ class Game:
                 #playsound("sounds/err.wav")
                 continue
             
+            return row, col
 
     def check_ships_destroyed(self, turn):
         """
@@ -250,7 +251,7 @@ class Game:
                     os.system(command_to_clear)
                     self.print_on_win()
                     win = str(
-                        "You Lose! Computer wins the game! Congratulations!"
+                        "You Lose! Computer wins the game! Unlucky!"
                     )
                     print(win)
                     self.result = "player_lose"
