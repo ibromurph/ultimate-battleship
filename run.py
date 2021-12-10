@@ -43,7 +43,15 @@ class Game:
 
 
     def create_ships(self, board):
-        pass
+        """
+        Method creates ships in the board randomly
+        :return: None
+        """
+        for i in range(2):
+            ship_row, ship_column = randint(0, 1), randint(0, 1)
+            while board[ship_row][ship_column] == "X":
+                ship_row, ship_column = randint(0, 1), randint(0, 1)
+            board[ship_row][ship_column] = "X"
 
     def check_ships_destroyed(self, turn):
         pass
@@ -55,7 +63,6 @@ class Game:
         pass
 
     def start_game(self):
-        pass
 
 
 def exit_game():
@@ -67,7 +74,6 @@ def exit_game():
 
 
 def main():
-    
     os.system(command_to_clear)
 
     while True:
