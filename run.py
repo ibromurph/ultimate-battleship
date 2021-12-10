@@ -43,6 +43,17 @@ class Game:
             print("%d|%s|" % (row_number, "|".join(row)))
             row_number += 1
 
+    def create_ships(self, board):
+        """
+        Method creates ships in the board randomly
+        :return: None
+        """
+        for i in range(2):
+            ship_row, ship_column = randint(0, 1), randint(0, 1)
+            while board[ship_row][ship_column] == "X":
+                ship_row, ship_column = randint(0, 1), randint(0, 1)
+            board[ship_row][ship_column] = "X"
+
     @staticmethod
     def get_user_input():
         """
@@ -68,16 +79,6 @@ class Game:
                 #playsound("sounds/err.wav")
                 continue
             
-    def create_ships(self, board):
-        """
-        Method creates ships in the board randomly
-        :return: None
-        """
-        for i in range(2):
-            ship_row, ship_column = randint(0, 1), randint(0, 1)
-            while board[ship_row][ship_column] == "X":
-                ship_row, ship_column = randint(0, 1), randint(0, 1)
-            board[ship_row][ship_column] = "X"
 
     def check_ships_destroyed(self, turn):
         """
@@ -187,9 +188,10 @@ class Game:
                 print("Computer's turn: ")
                 row, col = self.get_random_move()
 
-                while self.player_guess_board[row][col] != " ":
-                    print("You have already shot here!")
+                while self.computer_guess_board[row][col] != " ":
                     row, col = self.get_random_move()
+                    if self.computer_guess_board[row][col] == " ":
+                        break
 
                 print_hr()
                 print("Computer shot at ({}, {})".format(row, lets[col]))
@@ -223,11 +225,11 @@ class Game:
                 if not is_win:
                     while True:
                         res = input("Do you want to continue? (y/n) ")
-                        if res == "y":
+                        if res == "y" or res == "Y":
                             turn = 0
                             os.system(command_to_clear)
                             break
-                        elif res == "n":
+                        elif res == "n" or res == "N":
                             self.result = "player_quit"
                             break
                         else:
@@ -238,6 +240,7 @@ class Game:
                         break
 
                 if is_win:
+                    input("Press Enter to Continue...")
                     os.system(command_to_clear)
                     self.print_on_win()
                     win = str(
@@ -296,13 +299,13 @@ Choose option:
                     game.result == "player_win" or game.result == "player_lose"
                 ):
                     res = input("Would you like to play again? (y/n) ")
-                    if res == "y":
+                    if res == "y" or res == "Y":
                         print_hr()
                         print(" The game will continue!")
                         print_hr()
                         input("Press Enter to continue...")
                         break
-                    elif res == "n":
+                    elif res == "n" or res == "N":
                         exit_game()
                     else:
                         print("Invalid input! Only 'y' or 'n' are allowed.")
