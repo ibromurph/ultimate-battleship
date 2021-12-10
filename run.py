@@ -54,7 +54,20 @@ class Game:
             board[ship_row][ship_column] = "X"
 
     def check_ships_destroyed(self, turn):
-        pass
+        """
+        Method checks if all ships are destroyed
+        :return: boolean value
+        """
+        if turn == 0:
+            if self.player_score == 2:
+                return True
+            else:
+                return False
+        elif turn == 1:
+            if self.computer_score == 2:
+                return True
+            else:
+                return False
 
     def get_random_move(self):
         pass
