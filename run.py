@@ -165,7 +165,25 @@ class Game:
 
                 is_win = self.check_ships_destroyed(turn)
 
+                if not is_win:
+                    input("Computer's turn now! Press Enter to continue...")
+                    turn = 1
+                    os.system(command_to_clear)
 
+                if is_win:
+                    os.system(command_to_clear)
+                    self.print_on_win()
+                    win = str(
+                        self.player_name + " wins the game! Congratulations!"
+                    )
+                    print(win)
+                    self.result = "player_win"
+                    #playsound("sounds/win.wav")
+                    input("Press enter!")
+                    break
+
+            elif turn == 1:  # computer's turn
+                pass
         # if computer turn
             #get random input
         
