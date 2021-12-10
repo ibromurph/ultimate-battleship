@@ -43,7 +43,7 @@ class Game:
             print("%d|%s|" % (row_number, "|".join(row)))
             row_number += 1
 
-
+    @staticmethod
     def get_user_input():
         """
         Method gets user coordinates input
