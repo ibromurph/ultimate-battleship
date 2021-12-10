@@ -178,21 +178,42 @@ class Game:
                     )
                     print(win)
                     self.result = "player_win"
-                    #playsound("sounds/win.wav")
+                    #playsound("sounds/err.wav")
                     input("Press enter!")
                     break
 
             elif turn == 1:  # computer's turn
-                pass
-        # if computer turn
-            #get random input
-        
-        #while player players input
-            # if on player board already been shot here, ask again
-            # if player board has ship, print computer hit a ship
-            # else if computer doesn't hit ship, print computer missed
+                os.system(command_to_clear)
+                print("Computer's turn: ")
+                row, col = self.get_random_move()
 
-        #print score
+                while self.player_guess_board[row][col] != " ":
+                    print("You have already shot here!")
+                    row, col = self.get_random_move()
+
+                print_hr()
+                print("Computer shot at ({}, {})".format(row, lets[col]))
+                print_hr()
+
+                if self.player_board[row][col] == "X":
+                    self.computer_guess_board[row][col] = "X"
+                    self.computer_score += 1
+                    print("Computer hit a ship!")
+                else:
+                    self.computer_guess_board[row][col] = "O"
+                    print("Computer missed the shot!")
+
+                print_hr()
+                print(
+                    "Current Score: Player {} - {}, Computer - {}".format(
+                        self.player_name,
+                        self.player_score,
+                        self.computer_score,
+                    )
+                )
+
+        # print board
+        # print score
 
         #check if all ships are destroyed
             #if they are, computer wins
