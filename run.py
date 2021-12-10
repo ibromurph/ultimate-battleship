@@ -19,19 +19,28 @@ def print_hr():
     print("| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  |")
 
 # Game class
+class Game:
+    
+    def __init__(self, player_name):
 
-#init
+    def print_board(self, board):
 
-#print boards
+    def create_ships(self, board):
 
-#create ships
+    def check_ships_destroyed(self, turn):
 
-#check if all ships destroyed
+    def get_random_move(self):
 
-#get computer move
+    def print_on_win(self):
 
-#start game
+    def start_game(self):
 
-#exit game
+def exit_game():
 
-#main menu
+def main():
+
+    #Start game
+
+    #Show game rules
+
+    #Exit game
