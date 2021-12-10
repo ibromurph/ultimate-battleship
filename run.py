@@ -4,7 +4,9 @@
 
 # imports
 import os
+from playsound import playsound
 from random import *
+
 
 # contstants
 let_to_num = {
@@ -57,13 +59,13 @@ class Game:
                 col = let_to_num[col]
 
                 if col < 0 or col > 1 or row < 0 or row > 1:
-                     print("Please enter a valid move!")
-                    playsound("sounds/err.wav")
+                    print("Please enter a valid move!")
+                    #playsound("sounds/err.wav")
                     continue
 
             except:
                 print("Please enter a valid move!")
-                playsound("sounds/err.wav")
+                #playsound("sounds/err.wav")
                 continue
             
     def create_ships(self, board):
