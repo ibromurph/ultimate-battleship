@@ -43,7 +43,6 @@ class Game:
 
 
 def exit_game():
-    pass
 
 def main():
     
@@ -58,7 +57,7 @@ def main():
 | ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  |
 
 Welcome to Battleship!
-Board Size: 2 x 2, Number of Ships: 2
+Board Size: 10 x 10, Number of Ships: 5
 Have Fun!
 
 Choose option:
@@ -95,6 +94,31 @@ Choose option:
                         exit_game()
                     else:
                         print("Invalid input! Only 'y' or 'n' are allowed.")
+
+        elif option == "2":
+            os.system(command_to_clear)
+            print_hr()
+            print("Here are the Game Rules!")
+            print_hr()
+
+            print(
+                """
+Rules:
+1. The board is 10 x 10
+2. Each player has 5 ships
+3. Ships are placed randomly
+4. Ships cannot overlap with each other
+5. Ships cannot be placed in the same position
+6. Ships cannot be placed on the edge of the board
+            """
+            )
+
+            print_hr()
+            input("Press Enter to continue...")
+
+        elif option == "3":
+            exit_game()
+
                 
 if __name__ == "__main__":
     main()
