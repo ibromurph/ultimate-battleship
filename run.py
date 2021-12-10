@@ -70,18 +70,35 @@ class Game:
                 return False
 
     def get_random_move(self):
-        pass
+        """
+        Method gets random position to shoot for computer
+        :return: row and column
+        """
+        while True:
+            row = randint(0, 1)
+            col = randint(0, 1)
+            if self.computer_guess_board[row][col] == " ":
+                return row, col
 
     def print_on_win(self):
-        pass
+        """
+        Method prints to window an update of the boards
+        :return: None
+        """
+        print("Player {} Ocean:".format(self.player_name))
+        self.print_board(self.player_board)
+        print_hr()
+        print("Computer Ocean:")
+        self.print_board(self.computer_board)
+        print_hr()
 
     def start_game(self):
-
+        pass
 
 def exit_game():
     print()
     print_hr()
-    print(" Sad to see you go. Try again later!")
+    print("Sad to see you go. Try again later!")
     print_hr()
     exit()
 
