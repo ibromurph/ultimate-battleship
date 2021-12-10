@@ -4,6 +4,7 @@
 
 # imports
 import os
+import platform
 from playsound import playsound
 from random import *
 
@@ -17,7 +18,11 @@ let_to_num = {
 }
 
 lets = ["A", "B"]
-command_to_clear = "clear"
+if platform.system() == "Windows":
+    command_to_clear = "cls"
+else:
+    command_to_clear = "clear"
+
 
 def print_hr():
     print("| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |")
@@ -215,7 +220,6 @@ class Game:
                         self.computer_score,
                     )
                 )
-
                 print_hr()
 
                 print("Computer Shots Till Now:")
