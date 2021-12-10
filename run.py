@@ -93,6 +93,18 @@ class Game:
         print_hr()
 
     def start_game(self):
+        """
+        Method: Main game loop
+        :return: None
+        """
+        turn = 0 #represents player turn
+        self.create_ships(self.player_board)
+        self.create_ships(self.computer_board)
+
+        os.system(command_to_clear)
+        print_hr()
+        print("endless loop")
+
         
         # if players turn
             #get user input
