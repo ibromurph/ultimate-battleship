@@ -140,18 +140,30 @@ class Game:
                 print("Computer's Board:")
                 self.print_board(self.player_guess_board)
 
-            row, col = self.get_user_input()
+                row, col = self.get_user_input()
         
-        #while player players input
-            # if on comp board already shot here, ask again
-            # if comp board has ship, print you hit a ship
-            # else if don't hit ship, print you missed
+                while self.player_guess_board[row][col] != " ":
+                    print("You have already shot here!")
+                    row, col = self.get_user_input()
 
-        #print score
+                if self.computer_board[row][col] == "X":
+                    self.player_guess_board[row][col] = "X"
+                    self.player_score += 1
+                    print("You hit a ship!")
+                else:
+                    self.player_guess_board[row][col] = "O"
+                    print("You missed the shot!")
 
-        #check if all ships are destroyed
-            #if they are, you win
-            #if not, computer turn
+                print_hr()
+                print(
+                    "Current Score: Player {} - {}, Computer - {}".format(
+                        self.player_name,
+                        self.player_score,
+                        self.computer_score,
+                    )
+                )
+
+                is_win = self.check_ships_destroyed(turn)
 
 
         # if computer turn
