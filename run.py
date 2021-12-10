@@ -12,6 +12,8 @@ from random import *
 let_to_num = {
     "A": 0,
     "B": 1,
+    "a": 0,
+    "b": 1,
 }
 
 lets = ["A", "B"]
