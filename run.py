@@ -26,14 +26,23 @@ class Turn(Enum):
 def print_hr():
     print("| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |")
 
+# Board class
+class Board:
+    def __init__(self, point):
+        self.board = [[" "] * point.x for i in range(point.y)]  # list of rows
+        self.size = point
+
 # Game class
 class Game:
     def __init__(self, player_name):
         self.player_name = player_name
+        
         self.player_board = [[" "] * 2 for i in range(2)]
         self.computer_board = [[" "] * 2 for i in range(2)]
         self.player_guess_board = [[" "] * 2 for i in range(2)]
         self.computer_guess_board = [[" "] * 2 for i in range(2)]
+
+
         self.player_score = 0
         self.computer_score = 0
         self.result = None #win, lose, quit
