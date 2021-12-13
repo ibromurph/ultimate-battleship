@@ -12,7 +12,7 @@ from enum import Enum
 
 # contstants
 letters_to_num = {"A": 0, "B": 1, "a": 0, "b": 1}
-score_to_win = 5
+score_to_win = 2
 
 lets = ["A", "B"]
 if platform.system() == "Windows":
@@ -69,7 +69,7 @@ class Game:
         """
         while True:
             hit_position = input(
-                "Enter coordinates (row, column) or (number, alphabet): "
+                "Enter coordinates (row, column) or (number, alphabet): \n"
             )
             try:
                 row, col = hit_position.split(",")
@@ -223,7 +223,7 @@ class Game:
 
                 if not is_win:
                     while True:
-                        res = input("Do you want to continue? (y/n) ")
+                        res = input("Do you want to continue? (y/n) \n")
                         if res == "y" or res == "Y":
                             turn = Turn.player
                             subprocess.run(command_to_clear)
@@ -282,7 +282,7 @@ Choose option:
         )
         if option == "1":
             print_hr()
-            player_name = input("Enter name of player: ")
+            player_name = input("Enter name of player: \n")
             print_hr()
             input("Press Enter to continue...")
 
@@ -297,7 +297,7 @@ Choose option:
                 while (
                     game.result == "player_win" or game.result == "player_lose"
                 ):
-                    res = input("Would you like to play again? (y/n) ")
+                    res = input("Would you like to play again? (y/n) \n")
                     if res == "y" or res == "Y":
                         print_hr()
                         print(" The game will continue!")
