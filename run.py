@@ -78,12 +78,12 @@ class Game:
 
                 if col < 0 or col > 1 or row < 0 or row > 1:
                     print("Please enter a valid move!")
-                    #playsound("sounds/err.wav")
+                    playsound("sounds/err.wav")
                     continue
 
             except:
                 print("Please enter a valid move!")
-                #playsound("sounds/err.wav")
+                playsound("sounds/err.wav")
                 continue
             
             return row, col
@@ -183,7 +183,7 @@ class Game:
                     )
                     print(win)
                     self.result = "player_win"
-                    # playsound("sounds/err.wav")
+                    playsound("sounds/err.wav")
                     input("Press enter!")
                     break
 
@@ -247,7 +247,7 @@ class Game:
                     )
                     print(win)
                     self.result = "player_lose"
-                    #playsound("sounds/lose.wav")
+                    playsound("sounds/lose.wav")
                     input("Press enter!")
                     break
 
