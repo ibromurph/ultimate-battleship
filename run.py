@@ -72,7 +72,7 @@ class Board:
         Method creates ships in the board randomly
         :return: None
         """
-        for i in range(10):
+        for i in range(8):
             ship_row, ship_column = randint(0, 7), randint(0, 7)
             while self.board[ship_row][ship_column] == "X":
                 ship_row, ship_column = randint(0, 7), randint(0, 7)
@@ -304,7 +304,7 @@ def main():
 | ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |
 
 Welcome to Battleship!
-Board Size: 10 x 10, Number of Ships: {score_to_win}
+Board Size: 8 x 8, Number of Ships: {score_to_win}
 Have Fun!
 
 Choose option:
