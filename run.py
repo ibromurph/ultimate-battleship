@@ -13,7 +13,7 @@ from enum import Enum
 letters_to_num = {"A": 0, "B": 1, "a": 0, "b": 1}
 score_to_win = 2
 
-lets = ["A", "B"]
+letters = ["A", "B"]
 if platform.system() == "Windows":
     command_to_clear = "cls"
 else:
