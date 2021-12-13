@@ -49,6 +49,16 @@ class Board:
             print("%d|%s|" % (row_number, "|".join(row)))
             row_number += 1
 
+    def create_ships(self):
+        """
+        Method creates ships in the board randomly
+        :return: None
+        """
+        for i in range(2):
+            ship_row, ship_column = randint(0, 1), randint(0, 1)
+            while board[ship_row][ship_column] == "X":
+                ship_row, ship_column = randint(0, 1), randint(0, 1)
+            board[ship_row][ship_column] = "X"
 
 # Game class
 class Game:
@@ -66,16 +76,6 @@ class Game:
         self.computer_score = 0
         self.result = None #win, lose, quit
 
-    def create_ships(self, board):
-        """
-        Method creates ships in the board randomly
-        :return: None
-        """
-        for i in range(2):
-            ship_row, ship_column = randint(0, 1), randint(0, 1)
-            while board[ship_row][ship_column] == "X":
-                ship_row, ship_column = randint(0, 1), randint(0, 1)
-            board[ship_row][ship_column] = "X"
 
     @staticmethod
     def get_user_input():
@@ -148,8 +148,8 @@ class Game:
         :return: None
         """
         turn = Turn.player # represents player turn
-        self.create_ships(self.player_board)
-        self.create_ships(self.computer_board)
+        self.player_board.create_ships()
+        self.computer_board.create_ships()
 
         subprocess.run(command_to_clear)
         print_hr()
