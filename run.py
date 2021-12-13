@@ -56,9 +56,9 @@ class Board:
         """
         for i in range(2):
             ship_row, ship_column = randint(0, 1), randint(0, 1)
-            while board[ship_row][ship_column] == "X":
+            while self.board[ship_row][ship_column] == "X":
                 ship_row, ship_column = randint(0, 1), randint(0, 1)
-            board[ship_row][ship_column] = "X"
+            self.board[ship_row][ship_column] = "X"
 
 # Game class
 class Game:
@@ -71,11 +71,9 @@ class Game:
         self.player_guess_board = Board(self.size)
         self.computer_guess_board = Board(self.size)
 
-
         self.player_score = 0
         self.computer_score = 0
         self.result = None #win, lose, quit
-
 
     @staticmethod
     def get_user_input():
@@ -127,7 +125,7 @@ class Game:
         while True:
             row = randint(0, 1)
             col = randint(0, 1)
-            if self.computer_guess_board[row][col] == " ":
+            if self.computer_guess_board.board[row][col] == " ":
                 return row, col
 
     def print_on_win(self):
@@ -166,16 +164,16 @@ class Game:
 
                 row, col = self.get_user_input()
         
-                while self.player_guess_board[row][col] != " ":
+                while self.player_guess_board.board[row][col] != " ":
                     print("You have already shot here!")
                     row, col = self.get_user_input()
 
-                if self.computer_board[row][col] == "X":
-                    self.player_guess_board[row][col] = "X"
+                if self.computer_board.board[row][col] == "X":
+                    self.player_guess_board.board[row][col] = "X"
                     self.player_score += 1
                     print("You hit a ship!")
                 else:
-                    self.player_guess_board[row][col] = "O"
+                    self.player_guess_board.board[row][col] = "O"
                     print("You missed the shot!")
 
                 print_hr()
@@ -217,12 +215,12 @@ class Game:
                 print(f"Computer shot at ({row}, {letters[col]})")
                 print_hr()
 
-                if self.player_board[row][col] == "X":
-                    self.computer_guess_board[row][col] = "X"
+                if self.player_board.board[row][col] == "X":
+                    self.computer_guess_board.board[row][col] = "X"
                     self.computer_score += 1
                     print("Computer hit a ship!")
                 else:
-                    self.computer_guess_board[row][col] = "O"
+                    self.computer_guess_board.board[row][col] = "O"
                     print("Computer missed the shot!")
 
                 print_hr()
