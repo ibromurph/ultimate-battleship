@@ -176,6 +176,8 @@ class Game:
                 if is_win:
                     subprocess.run(command_to_clear)
                     self.print_on_win()
+                    print("You hit the final ship!")
+                    print_hr()
                     win = str(
                         self.player_name + " wins the game! Congratulations!"
                     )
@@ -239,6 +241,8 @@ class Game:
                     input("Press Enter to Continue...")
                     subprocess.run(command_to_clear)
                     self.print_on_win()
+                    print("Computer hit your final ship!")
+                    print_hr()
                     win = str(
                         "You Lose! Computer wins the game! Unlucky!"
                     )
