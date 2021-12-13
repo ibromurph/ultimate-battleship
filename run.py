@@ -19,8 +19,6 @@ letters_to_num = {
     "F": 5,
     "G": 6,
     "H": 7,
-    "I": 8,
-    "J": 9,
     "a": 0,
     "b": 1,
     "c": 2,
@@ -29,13 +27,11 @@ letters_to_num = {
     "f": 5,
     "g": 6,
     "h": 7,
-    "i": 8,
-    "j": 9,
 }
 
 score_to_win = 5
 
-letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
+letters = ["A", "B", "C", "D", "E", "F", "G", "H"]
 if platform.system() == "Windows":
     command_to_clear = "cls"
 else:
@@ -65,7 +61,7 @@ class Board:
         Method prints the board to console
         :return: None
         """
-        print("  A B C D E F G H I J")
+        print("  A B C D E F G H")
         row_number = 0
         for row in self.board:
             print("%d|%s|" % (row_number, "|".join(row)))
@@ -77,16 +73,16 @@ class Board:
         :return: None
         """
         for i in range(10):
-            ship_row, ship_column = randint(0, 9), randint(0, 9)
+            ship_row, ship_column = randint(0, 7), randint(0, 7)
             while self.board[ship_row][ship_column] == "X":
-                ship_row, ship_column = randint(0, 9), randint(0, 9)
+                ship_row, ship_column = randint(0, 7), randint(0, 7)
             self.board[ship_row][ship_column] = "X"
             
 # Game class
 class Game:
     def __init__(self, player_name):
         self.player_name = player_name
-        self.size = Point(10, 10)
+        self.size = Point(8, 8)
 
         self.player_board = Board(self.size)
         self.computer_board = Board(self.size)
@@ -112,7 +108,7 @@ class Game:
                 row = int(row)
                 col = letters_to_num[col]
 
-                if col < 0 or col > 9 or row < 0 or row > 9:
+                if col < 0 or col > 7 or row < 0 or row > 7:
                     print("Please enter a valid move!")
 
                     continue
@@ -145,8 +141,8 @@ class Game:
         :return: row and column
         """
         while True:
-            row = randint(0, 9)
-            col = randint(0, 9)
+            row = randint(0, 7)
+            col = randint(0, 7)
             if self.computer_guess_board.board[row][col] == " ":
                 return row, col
 
@@ -360,7 +356,7 @@ Choose option:
             print(
                 f"""
 Rules:
-1. The board is 10 x 10
+1. The board is 8 x 8
 2. Each player has {score_to_win} ships
 3. Ships are placed randomly
 4. Ships cannot overlap with each other
