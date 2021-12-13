@@ -73,7 +73,7 @@ class Game:
             try:
                 row, col = hit_position.split(",")
                 row = int(row)
-                col = let_to_num[col]
+                col = letters_to_num[col]
 
                 if col < 0 or col > 1 or row < 0 or row > 1:
                     print("Please enter a valid move!")
