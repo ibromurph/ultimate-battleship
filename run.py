@@ -59,7 +59,7 @@ class Board:
             while self.board[ship_row][ship_column] == "X":
                 ship_row, ship_column = randint(0, 1), randint(0, 1)
             self.board[ship_row][ship_column] = "X"
-
+            
 # Game class
 class Game:
     def __init__(self, player_name):
@@ -206,9 +206,9 @@ class Game:
                 print("Computer's turn: ")
                 row, col = self.get_random_move()
 
-                while self.computer_guess_board[row][col] != " ":
+                while self.computer_guess_board.board[row][col] != " ":
                     row, col = self.get_random_move()
-                    if self.computer_guess_board[row][col] == " ":
+                    if self.computer_guess_board.board[row][col] == " ":
                         break
 
                 print_hr()
@@ -297,7 +297,12 @@ Choose option:
         )
         if option == "1":
             print_hr()
-            player_name = input("Enter name of player: \n")
+            player_name = input("Enter first name of player: \n")
+        
+            while not player_name.isalpha(): #check to ensure player name is alphabetic and not empty
+                print("Name must be alphabetic and have no spaces. Try again!")
+                player_name = input("Enter name of player: \n")
+
             print_hr()
             input("Press Enter to continue...")
 
@@ -354,3 +359,4 @@ Rules:
                 
 if __name__ == "__main__":
     main()
+    
