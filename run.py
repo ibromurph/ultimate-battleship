@@ -26,6 +26,12 @@ class Turn(Enum):
 def print_hr():
     print("| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |")
 
+# Point class
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        
 # Board class
 class Board:
     def __init__(self, point):
