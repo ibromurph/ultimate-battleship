@@ -324,10 +324,11 @@ Rules:
 4. Ships cannot overlap with each other
 5. Ships cannot be placed in the same position
 6. Ships cannot be placed on the edge of the board
-7. Players take turns firing shots (calling out grid coordinates) with the format "1,a"
-8. Players attempt to hit the opponent's enemy ships.
-9. When a ship it "hit", it is considered sunk
-10. As soon as all of one player's ships have been sunk, the game ends.
+7. Players take turns firing shots (calling out grid coordinates) 
+8. Coordinates have the format "1,a" or "2,b"
+9. Players attempt to hit the opponent's enemy ships.
+10. When a ship it "hit", it is considered sunk
+11. As soon as all of one player's ships have been sunk, the game ends.
             """
             )
             print_hr()
