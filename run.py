@@ -12,7 +12,7 @@ from enum import Enum
 
 # contstants
 letters_to_num = {"A": 0, "B": 1, "a": 0, "b": 1}
-score_to_win = 2
+score_to_win = 5
 
 lets = ["A", "B"]
 if platform.system() == "Windows":
@@ -21,8 +21,8 @@ else:
     command_to_clear = "clear"
 
 class Turn(Enum):
-  player = 0
-  computer = 1
+    player = 0
+    computer = 1
 
 def print_hr():
     print("| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |")
@@ -94,12 +94,12 @@ class Game:
         :return: boolean value
         """
         if turn == Turn.player:
-            if self.player_score == 2:
+            if self.player_score >= score_to_win:
                 return True
             else:
                 return False
         elif turn == Turn.computer:
-            if self.computer_score == 2:
+            if self.computer_score >= score_to_win:
                 return True
             else:
                 return False
@@ -141,9 +141,9 @@ class Game:
         
         while True:
             if turn == Turn.player:  # player's turn
-                print("Player {}'s turn: ".format(self.player_name))
+                print(f"{self.player_name}'s turn:")
                 print_hr()
-                print("Your Ocean:")
+                print(f"{self.player_name}'s Ocean:")
                 self.print_board(self.player_board)
                 print_hr()
                 print("Computer's Board:")
@@ -165,11 +165,7 @@ class Game:
 
                 print_hr()
                 print(
-                    "Current Score: Player {} - {}, Computer - {}".format(
-                        self.player_name,
-                        self.player_score,
-                        self.computer_score,
-                    )
+                    f"Current Score: {self.player_name} - {self.player_score}, Computer - {self.computer_score}"
                 )
 
                 is_win = self.check_ships_destroyed(turn)
@@ -202,7 +198,7 @@ class Game:
                         break
 
                 print_hr()
-                print("Computer shot at ({}, {})".format(row, lets[col]))
+                print(f"Computer shot at ({row}, {letters[col]})")
                 print_hr()
 
                 if self.player_board[row][col] == "X":
@@ -215,11 +211,7 @@ class Game:
 
                 print_hr()
                 print(
-                    "Current Score: Player {} - {}, Computer - {}".format(
-                        self.player_name,
-                        self.player_score,
-                        self.computer_score,
-                    )
+                    f"Current Score: {self.player_name} - {self.player_score}, Computer - {self.computer_score}"
                 )
                 print_hr()
 
@@ -273,13 +265,13 @@ def main():
     while True:
         subprocess.run(command_to_clear)
         option = input(
-            """
+            f"""
 | ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |
 | ~ ~ ~ ~ ~ ~ ~ ~ ~Battleship ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |
 | ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |
 
 Welcome to Battleship!
-Board Size: 10 x 10, Number of Ships: 5
+Board Size: 10 x 10, Number of Ships: {score_to_win}
 Have Fun!
 
 Choose option:
@@ -324,17 +316,20 @@ Choose option:
             print_hr()
 
             print(
-                """
+                f"""
 Rules:
 1. The board is 10 x 10
-2. Each player has 5 ships
+2. Each player has {score_to_win} ships
 3. Ships are placed randomly
 4. Ships cannot overlap with each other
 5. Ships cannot be placed in the same position
 6. Ships cannot be placed on the edge of the board
+7. Players take turns firing shots (calling out grid coordinates) with the format "1,a"
+8. Players attempt to hit the opponent's enemy ships.
+9. When a ship it "hit", it is considered sunk
+10. As soon as all of one player's ships have been sunk, the game ends.
             """
             )
-
             print_hr()
             input("Press Enter to continue...")
 
