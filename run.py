@@ -72,7 +72,7 @@ class Board:
         Method creates ships in the board randomly
         :return: None
         """
-        for i in range(8):
+        for i in range(5):
             ship_row, ship_column = randint(0, 7), randint(0, 7)
             while self.board[ship_row][ship_column] == "X":
                 ship_row, ship_column = randint(0, 7), randint(0, 7)
