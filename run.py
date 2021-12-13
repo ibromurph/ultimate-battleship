@@ -7,15 +7,12 @@ import subprocess
 import platform
 from playsound import playsound
 from random import *
+from enum import Enum
 
 
 # contstants
-let_to_num = {
-    "A": 0,
-    "B": 1,
-    "a": 0,
-    "b": 1,
-}
+letters_to_num = {"A": 0, "B": 1, "a": 0, "b": 1}
+score_to_win = 2
 
 lets = ["A", "B"]
 if platform.system() == "Windows":
@@ -23,6 +20,9 @@ if platform.system() == "Windows":
 else:
     command_to_clear = "clear"
 
+class Turn(Enum):
+  player = 0
+  computer = 1
 
 def print_hr():
     print("| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |")
@@ -93,12 +93,12 @@ class Game:
         Method checks if all ships are destroyed
         :return: boolean value
         """
-        if turn == 0:
+        if turn == Turn.player:
             if self.player_score == 2:
                 return True
             else:
                 return False
-        elif turn == 1:
+        elif turn == Turn.computer:
             if self.computer_score == 2:
                 return True
             else:
@@ -132,7 +132,7 @@ class Game:
         Method: Main game loop
         :return: None
         """
-        turn = 0 # represents player turn
+        turn = Turn.player # represents player turn
         self.create_ships(self.player_board)
         self.create_ships(self.computer_board)
 
@@ -140,7 +140,7 @@ class Game:
         print_hr()
         
         while True:
-            if turn == 0:  # player's turn
+            if turn == Turn.player:  # player's turn
                 print("Player {}'s turn: ".format(self.player_name))
                 print_hr()
                 print("Your Ocean:")
@@ -176,7 +176,7 @@ class Game:
 
                 if not is_win:
                     input("Computer's turn now! Press Enter to continue...")
-                    turn = 1
+                    turn = Turn.computer
                     subprocess.run(command_to_clear)
 
                 if is_win:
@@ -191,7 +191,7 @@ class Game:
                     input("Press enter!")
                     break
 
-            elif turn == 1:  # computer's turn
+            elif turn == Turn.computer:  # computer's turn
                 subprocess.run(command_to_clear)
                 print("Computer's turn: ")
                 row, col = self.get_random_move()
@@ -233,7 +233,7 @@ class Game:
                     while True:
                         res = input("Do you want to continue? (y/n) ")
                         if res == "y" or res == "Y":
-                            turn = 0
+                            turn = Turn.player
                             subprocess.run(command_to_clear)
                             break
                         elif res == "n" or res == "N":
