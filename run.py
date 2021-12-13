@@ -3,7 +3,7 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
 # imports
-import os
+import subprocess
 import platform
 from playsound import playsound
 from random import *
@@ -136,7 +136,7 @@ class Game:
         self.create_ships(self.player_board)
         self.create_ships(self.computer_board)
 
-        os.system(command_to_clear)
+        subprocess.run(command_to_clear)
         print_hr()
         
         while True:
@@ -177,10 +177,10 @@ class Game:
                 if not is_win:
                     input("Computer's turn now! Press Enter to continue...")
                     turn = 1
-                    os.system(command_to_clear)
+                    subprocess.run(command_to_clear)
 
                 if is_win:
-                    os.system(command_to_clear)
+                    subprocess.run(command_to_clear)
                     self.print_on_win()
                     win = str(
                         self.player_name + " wins the game! Congratulations!"
@@ -192,7 +192,7 @@ class Game:
                     break
 
             elif turn == 1:  # computer's turn
-                os.system(command_to_clear)
+                subprocess.run(command_to_clear)
                 print("Computer's turn: ")
                 row, col = self.get_random_move()
 
@@ -234,7 +234,7 @@ class Game:
                         res = input("Do you want to continue? (y/n) ")
                         if res == "y" or res == "Y":
                             turn = 0
-                            os.system(command_to_clear)
+                            subprocess.run(command_to_clear)
                             break
                         elif res == "n" or res == "N":
                             self.result = "player_quit"
@@ -248,7 +248,7 @@ class Game:
 
                 if is_win:
                     input("Press Enter to Continue...")
-                    os.system(command_to_clear)
+                    subprocess.run(command_to_clear)
                     self.print_on_win()
                     win = str(
                         "You Lose! Computer wins the game! Unlucky!"
@@ -268,10 +268,10 @@ def exit_game():
     exit()
 
 def main():
-    os.system(command_to_clear)
+    subprocess.run(command_to_clear)
 
     while True:
-        os.system(command_to_clear)
+        subprocess.run(command_to_clear)
         option = input(
             """
 | ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |
@@ -295,7 +295,7 @@ Choose option:
             input("Press Enter to continue...")
 
             while option == "1":
-                os.system(command_to_clear)
+                subprocess.run(command_to_clear)
                 game = Game(player_name)
                 game.start_game()
 
@@ -318,7 +318,7 @@ Choose option:
                         print("Invalid input! Only 'y' or 'n' are allowed.")
 
         elif option == "2":
-            os.system(command_to_clear)
+            subprocess.run(command_to_clear)
             print_hr()
             print("Here are the Game Rules!")
             print_hr()
