@@ -18,7 +18,6 @@ letters_to_num = {
     "E": 4,
     "F": 5,
     "G": 6,
-    "H": 7,
     "a": 0,
     "b": 1,
     "c": 2,
@@ -26,7 +25,6 @@ letters_to_num = {
     "e": 4,
     "f": 5,
     "g": 6,
-    "h": 7,
 }
 
 score_to_win = 5
@@ -61,7 +59,7 @@ class Board:
         Method prints the board to console
         :return: None
         """
-        print("  A B C D E F G H")
+        print("  A B C D E F G")
         row_number = 0
         for row in self.board:
             print("%d|%s|" % (row_number, "|".join(row)))
@@ -73,16 +71,16 @@ class Board:
         :return: None
         """
         for i in range(5):
-            ship_row, ship_column = randint(0, 7), randint(0, 7)
+            ship_row, ship_column = randint(0, 6), randint(0, 6)
             while self.board[ship_row][ship_column] == "X":
-                ship_row, ship_column = randint(0, 7), randint(0, 7)
+                ship_row, ship_column = randint(0, 6), randint(0, 6)
             self.board[ship_row][ship_column] = "X"
             
 # Game class
 class Game:
     def __init__(self, player_name):
         self.player_name = player_name
-        self.size = Point(8, 8)
+        self.size = Point(7, 7)
 
         self.player_board = Board(self.size)
         self.computer_board = Board(self.size)
@@ -108,7 +106,7 @@ class Game:
                 row = int(row)
                 col = letters_to_num[col]
 
-                if col < 0 or col > 7 or row < 0 or row > 7:
+                if col < 0 or col > 6 or row < 0 or row > 6:
                     print("Please enter a valid move!")
 
                     continue
@@ -141,8 +139,8 @@ class Game:
         :return: row and column
         """
         while True:
-            row = randint(0, 7)
-            col = randint(0, 7)
+            row = randint(0, 6)
+            col = randint(0, 6)
             if self.computer_guess_board.board[row][col] == " ":
                 return row, col
 
@@ -304,7 +302,7 @@ def main():
 | ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |
 
 Welcome to Battleship!
-Board Size: 8 x 8, Number of Ships: {score_to_win}
+Board Size: 7 x 7, Number of Ships: {score_to_win}
 Have Fun!
 
 Choose option:
@@ -356,7 +354,7 @@ Choose option:
             print(
                 f"""
 Rules:
-1. The board is 8 x 8
+1. The board is 7 x 7
 2. Each player has {score_to_win} ships
 3. Ships are placed randomly
 4. Ships cannot overlap with each other
