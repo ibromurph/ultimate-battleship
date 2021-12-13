@@ -31,38 +31,40 @@ class Point:
     def __init__(self, x, y):
         self.x = x
         self.y = y
-        
+
 # Board class
 class Board:
     def __init__(self, point):
         self.board = [[" "] * point.x for i in range(point.y)]  # list of rows
         self.size = point
 
-# Game class
-class Game:
-    def __init__(self, player_name):
-        self.player_name = player_name
-        
-        self.player_board = [[" "] * 2 for i in range(2)]
-        self.computer_board = [[" "] * 2 for i in range(2)]
-        self.player_guess_board = [[" "] * 2 for i in range(2)]
-        self.computer_guess_board = [[" "] * 2 for i in range(2)]
-
-
-        self.player_score = 0
-        self.computer_score = 0
-        self.result = None #win, lose, quit
-
-    def print_board(self, board):
+    def print(self):
         """
         Method prints the board to console
         :return: None
         """
         print("  A B")
         row_number = 0
-        for row in board:
+        for row in self.board:
             print("%d|%s|" % (row_number, "|".join(row)))
             row_number += 1
+
+
+# Game class
+class Game:
+    def __init__(self, player_name):
+        self.player_name = player_name
+        self.size = Point(2, 2)
+
+        self.player_board = Board(self.size)
+        self.computer_board = Board(self.size)
+        self.player_guess_board = Board(self.size)
+        self.computer_guess_board = Board(self.size)
+
+
+        self.player_score = 0
+        self.computer_score = 0
+        self.result = None #win, lose, quit
 
     def create_ships(self, board):
         """
@@ -134,10 +136,10 @@ class Game:
         :return: None
         """
         print("Player {} Ocean:".format(self.player_name))
-        self.print_board(self.player_board)
+        self.player_board.print()
         print_hr()
         print("Computer Ocean:")
-        self.print_board(self.computer_board)
+        self.computer_board.print()
         print_hr()
 
     def start_game(self):
@@ -157,10 +159,10 @@ class Game:
                 print(f"{self.player_name}'s turn:")
                 print_hr()
                 print(f"{self.player_name}'s Ocean:")
-                self.print_board(self.player_board)
+                self.player_board.print()
                 print_hr()
                 print("Computer's Board:")
-                self.print_board(self.player_guess_board)
+                self.player_guess_board.print()
 
                 row, col = self.get_user_input()
         
@@ -230,7 +232,7 @@ class Game:
                 print_hr()
 
                 print("Computer Shots Till Now:")
-                self.print_board(self.computer_guess_board)
+                self.computer_guess_board.print()
                 print_hr()
 
                 is_win = self.check_ships_destroyed(turn)
