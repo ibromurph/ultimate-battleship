@@ -10,10 +10,32 @@ from enum import Enum
 
 
 # contstants
-letters_to_num = {"A": 0, "B": 1, "a": 0, "b": 1}
-score_to_win = 2
+letters_to_num = {
+    "A": 0,
+    "B": 1,
+    "C": 2,
+    "D": 3,
+    "E": 4,
+    "F": 5,
+    "G": 6,
+    "H": 7,
+    "I": 8,
+    "J": 9,
+    "a": 0,
+    "b": 1,
+    "c": 2,
+    "d": 3,
+    "e": 4,
+    "f": 5,
+    "g": 6,
+    "h": 7,
+    "i": 8,
+    "j": 9,
+}
 
-letters = ["A", "B"]
+score_to_win = 5
+
+letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
 if platform.system() == "Windows":
     command_to_clear = "cls"
 else:
@@ -43,7 +65,7 @@ class Board:
         Method prints the board to console
         :return: None
         """
-        print("  A B")
+        print("  A B C D E F G H I J")
         row_number = 0
         for row in self.board:
             print("%d|%s|" % (row_number, "|".join(row)))
@@ -54,17 +76,17 @@ class Board:
         Method creates ships in the board randomly
         :return: None
         """
-        for i in range(2):
-            ship_row, ship_column = randint(0, 1), randint(0, 1)
+        for i in range(10):
+            ship_row, ship_column = randint(0, 9), randint(0, 9)
             while self.board[ship_row][ship_column] == "X":
-                ship_row, ship_column = randint(0, 1), randint(0, 1)
+                ship_row, ship_column = randint(0, 9), randint(0, 9)
             self.board[ship_row][ship_column] = "X"
             
 # Game class
 class Game:
     def __init__(self, player_name):
         self.player_name = player_name
-        self.size = Point(2, 2)
+        self.size = Point(10, 10)
 
         self.player_board = Board(self.size)
         self.computer_board = Board(self.size)
@@ -90,7 +112,7 @@ class Game:
                 row = int(row)
                 col = letters_to_num[col]
 
-                if col < 0 or col > 1 or row < 0 or row > 1:
+                if col < 0 or col > 9 or row < 0 or row > 9:
                     print("Please enter a valid move!")
 
                     continue
@@ -123,8 +145,8 @@ class Game:
         :return: row and column
         """
         while True:
-            row = randint(0, 1)
-            col = randint(0, 1)
+            row = randint(0, 9)
+            col = randint(0, 9)
             if self.computer_guess_board.board[row][col] == " ":
                 return row, col
 
