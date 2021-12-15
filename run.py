@@ -317,8 +317,8 @@ Choose option:
             player_name = input("Enter first name of player: \n")
         
             while not player_name.isalpha(): #check to ensure player name is alphabetic and not empty
-                print("Name must be alphabetic and have no spaces. Try again!")
-                player_name = input("Enter name of player: \n")
+                print("Name must be alphabetic (a-zA-Z) and have no spaces. Try again!")
+                player_name = input("Enter the first name of player: \n")
 
             print_hr()
             input("Press Enter to continue...")
