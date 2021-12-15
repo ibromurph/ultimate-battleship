@@ -35,18 +35,22 @@ if platform.system() == "Windows":
 else:
     command_to_clear = "clear"
 
+
 class Turn(Enum):
     player = 0
     computer = 1
 
+
 def print_hr():
     print("| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |")
+
 
 # Point class
 class Point:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+
 
 # Board class
 class Board:
@@ -76,7 +80,8 @@ class Board:
             while self.board[ship_row][ship_column] == "X":
                 ship_row, ship_column = randint(0, 6), randint(0, 6)
             self.board[ship_row][ship_column] = "X"
-            
+
+
 # Game class
 class Game:
     def __init__(self, player_name):
@@ -90,7 +95,7 @@ class Game:
 
         self.player_score = 0
         self.computer_score = 0
-        self.result = None #win, lose, quit
+        self.result = None
 
     @staticmethod
     def get_user_input():
@@ -115,7 +120,7 @@ class Game:
             except:
                 print("Please enter a valid move!")
                 continue
-            
+
             return row, col
 
     def check_ships_destroyed(self, turn):
@@ -162,15 +167,14 @@ class Game:
         Method: Main game loop
         :return: None
         """
-        turn = Turn.player # represents player turn
+        turn = Turn.player
         self.player_board.create_ships()
         self.computer_board.create_ships()
 
         subprocess.run(command_to_clear)
         print_hr()
-        
         while True:
-            if turn == Turn.player:  # player's turn
+            if turn == Turn.player:
                 print(f"{self.player_name}'s turn:")
                 print_hr()
                 print(f"{self.player_name}'s Ocean:")
@@ -180,7 +184,6 @@ class Game:
                 self.player_guess_board.print()
 
                 row, col = self.get_user_input()
-        
                 while self.player_guess_board.board[row][col] != " ":
                     print("You have already shot here!")
                     row, col = self.get_user_input()
@@ -195,7 +198,11 @@ class Game:
 
                 print_hr()
                 print(
-                    f"Current Score: {self.player_name} - {self.player_score}, Computer - {self.computer_score}"
+                    "Current Score: Player {} - {}, Computer - {}".format(
+                        self.player_name,
+                        self.player_score,
+                        self.computer_score,
+                    )
                 )
 
                 is_win = self.check_ships_destroyed(turn)
@@ -242,7 +249,11 @@ class Game:
 
                 print_hr()
                 print(
-                    f"Current Score: {self.player_name} - {self.player_score}, Computer - {self.computer_score}"
+                    "Current Score: Player {} - {}, Computer - {}".format(
+                        self.player_name,
+                        self.player_score,
+                        self.computer_score,
+                    )
                 )
                 print_hr()
 
@@ -291,6 +302,7 @@ def exit_game():
     print_hr()
     exit()
 
+
 def main():
     subprocess.run(command_to_clear)
 
@@ -315,9 +327,8 @@ Choose option:
         if option == "1":
             print_hr()
             player_name = input("Enter first name of player: \n")
-        
-            while not player_name.isalpha(): #check to ensure player name is alphabetic and not empty
-                print("Name must be alphabetic (a-zA-Z) and have no spaces. Try again!")
+            while not player_name.isalpha():
+                print("Name must be (a-zA-Z) and have no spaces. Try again!")
                 player_name = input("Enter the first name of player: \n")
 
             print_hr()
@@ -361,7 +372,7 @@ Rules:
 4. Ships cannot overlap with each other
 5. Ships cannot be placed in the same position
 6. Ships cannot be placed on the edge of the board
-7. Players take turns firing shots (calling out grid coordinates) 
+7. Players take turns firing shots (calling out grid coordinates)
 8. Grid coordinates have the following format (e.g): "1,a", "2,b", "4,e"
 9. Players attempt to hit the opponent's enemy ships.
 10. When a ship it "hit", it is considered sunk
@@ -373,7 +384,6 @@ Rules:
 
         elif option == "3":
             exit_game()
-                
+
 if __name__ == "__main__":
     main()
-    
