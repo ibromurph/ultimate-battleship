@@ -247,7 +247,7 @@ Further information and troubleshooting on cloning a repository from Github can 
 <p>The following literature and tutorials assisted me in writing code:</p>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=xz9GrOwQ_5E">Coding Advanced Battleship Part I in Python</a> - helped give me on the struture and some of the functions I may need in my own game.</li>
-<li><a href="https://codeinstitute.net/">Code Institute</a> - a great learning platform that has helped me get to this point</li>
+<li><a href="https://codeinstitute.net/">Code Institute</a> - a great learning platform that has helped me get to this point and also provided the github template to begin this piece of work</li>
 </ul>
 <h2>Acknowledgements</h2>
 <p>Thanks and sincere appreciation to:
