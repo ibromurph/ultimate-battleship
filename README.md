@@ -98,7 +98,8 @@ As soon as all of one player's ships have been sunk, the game ends.</li></ol>
 <h3>Flowchart</h3>
 <p>
 <ul>
-<li><a href="Workflow/Battleship_Flowchart_IM.jpg">Workflow of the game</a></li>
+<li>Workflow of the game</li>
+<img src="Workflow/Battleship_Flowchart_IM.jpg">
 </ul>
 </p>
 
