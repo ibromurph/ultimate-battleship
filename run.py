@@ -6,7 +6,7 @@ from enum import Enum
 
 
 # contstants
-letters_to_num = {
+letters_to_numbers = {
     "A": 0,
     "B": 1,
     "C": 2,
@@ -106,7 +106,7 @@ class Game:
             try:
                 row, col = hit_position.split(",")
                 row = int(row)
-                col = letters_to_num[col]
+                col = letters_to_numbers[col]
 
                 if col < 0 or col > 6 or row < 0 or row > 6:
                     print("Please enter a valid move!")
@@ -146,7 +146,7 @@ class Game:
             if self.computer_guess_board.board[row][col] == " ":
                 return row, col
 
-    def print_on_win(self):
+    def print_on_window(self):
         """
         Method prints to window an update of the boards
         :return: None
@@ -210,7 +210,7 @@ class Game:
 
                 if is_win:
                     subprocess.run(command_to_clear)
-                    self.print_on_win()
+                    self.print_on_window()
                     print("You hit the final ship!")
                     print_hr()
                     win = str(
@@ -253,7 +253,7 @@ class Game:
                 )
                 print_hr()
 
-                print("Computer Shots Till Now:")
+                print("Computer shots till now:")
                 self.computer_guess_board.print()
                 print_hr()
 
@@ -277,9 +277,9 @@ class Game:
                         break
 
                 if is_win:
-                    input("Press Enter to Continue...")
+                    input("Press Enter to continue...")
                     subprocess.run(command_to_clear)
-                    self.print_on_win()
+                    self.print_on_window()
                     print("Computer hit your final ship!")
                     print_hr()
                     win = str(
@@ -356,7 +356,7 @@ Choose option:
         elif option == "2":
             subprocess.run(command_to_clear)
             print_hr()
-            print("Here are the Game Rules!")
+            print("Here are the game rules...")
             print_hr()
 
             print(
