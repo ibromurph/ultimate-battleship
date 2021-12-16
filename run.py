@@ -176,7 +176,7 @@ class Game:
                 print(f"{self.player_name}'s Ocean:")
                 self.player_board.print()
                 print_hr()
-                print("Computer's Board:")
+                print("Computer's Ocean:")
                 self.player_guess_board.print()
 
                 row, col = self.get_user_input()
@@ -362,7 +362,7 @@ Choose option:
             print(
                 f"""
 Rules:
-1. The board is 7 x 7
+1. The board (or Ocean) is 7 x 7
 2. Each player has {score_to_win} ships
 3. Ships are placed randomly
 4. Ships cannot overlap with each other
