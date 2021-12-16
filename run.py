@@ -1,7 +1,3 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
-
 # imports
 import subprocess
 import platform
@@ -55,7 +51,7 @@ class Point:
 # Board class
 class Board:
     def __init__(self, point):
-        self.board = [[" "] * point.x for i in range(point.y)]  # list of rows
+        self.board = [[" "] * point.x for i in range(point.y)]
         self.size = point
 
     def print(self):
@@ -225,7 +221,7 @@ class Game:
                     input("Press enter!")
                     break
 
-            elif turn == Turn.computer:  # computer's turn
+            elif turn == Turn.computer:
                 subprocess.run(command_to_clear)
                 print("Computer's turn: ")
                 row, col = self.get_random_move()
